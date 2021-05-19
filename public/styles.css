@@ -1,0 +1,21 @@
+body{
+    font-family: 'Spartan', sans-serif;
+    background-color:gray;
+    width: 20em;
+}
+
+.clacWindow{
+    border:1px solid black;
+    height:40px;
+    margin:10px;
+    text-align: right;
+}
+.board{
+    display: flex;
+    width:100%;
+}
+.numBoard{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    width: 60%;
+}
