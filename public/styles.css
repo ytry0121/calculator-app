@@ -1,15 +1,104 @@
-body{
-    font-family: 'Spartan', sans-serif;
-    background-color:gray;
-    width: 20em;
+:root{
+    /* 
+    /* Theme 1 */
+    /* Backgrounds */
+    --very-dark-desaturated-blue-main: hsl(222, 26%, 31%);   /* (main background) */
+    --very-dark-desaturated-blue-toggle:: hsl(223, 31%, 20%);    /* (toggle background, keypad background) */
+    --very-dark-desaturated-blue-screen: hsl(224, 36%, 15%);    /* (screen background) */
+    /* Keys */
+    --desaturated-dark-blue-bg : hsl(225, 21%, 49%);/* (key background) */    
+    --desaturated-dark-blue-shadow: hsl(224, 28%, 35%);/* (key shadow) */
+    --red: hsl(6, 63%, 50%);    /* (key background, toggle) */
+    --dark-red: hsl(6, 70%, 34%);/* (key shadow)*/
+    --light-grayish-orange : hsl(30, 25%, 89%);/* (key background) */
+    --grayish-orange: hsl(28, 16%, 65%);/* (key shadow)*/
+    /* Text */
+    --very-dark-grayish-blue: hsl(221, 14%, 31%);
+    --white: hsl(0, 0, 100%)
+
+
+    /* Theme 2 */
+    /* Backgrounds */
+    /* Light gray (main background): hsl(0, 0%, 90%)
+    Grayish red (toggle background, keypad background): hsl(0, 5%, 81%)
+    Very light gray (screen background): hsl(0, 0%, 93%)
+    Keys
+    Dark moderate cyan (key background): hsl(185, 42%, 37%)
+    
+    Very dark cyan (key shadow): hsl(185, 58%, 25%)
+    
+    Orange (key background, toggle): hsl(25, 98%, 40%)
+    
+    Dark orange (key shadow): hsl(25, 99%, 27%)
+    
+    Light grayish yellow (key background): hsl(45, 7%, 89%)
+    
+    Dark grayish orange (key shadow): hsl(35, 11%, 61%)
+    
+    Text
+    Very dark grayish yellow: hsl(60, 10%, 19%)
+    White (text): hsl(0, 0, 100%)
+
+    /* Theme 3 */
+    /* Backgrounds */
+    /* Very dark violet (main background): hsl(268, 75%, 9%) 
+    Very dark violet (toggle background, keypad background, screen background): hsl(268, 71%, 12%)
+    Keys
+    Dark violet (key background): hsl(281, 89%, 26%)
+    
+    Vivid magenta (key shadow): hsl(285, 91%, 52%)
+    
+    Pure cyan (key background, toggle): hsl(176, 100%, 44%)
+    
+    Soft cyan (key shadow): hsl(177, 92%, 70%)
+    
+    Very dark violet (key background): hsl(268, 47%, 21%)
+    
+    Dark magenta (key shadow): hsl(290, 70%, 36%)
+    
+    Text
+    Light yellow: hsl(52, 100%, 62%)
+    Very dark blue: hsl(198, 20%, 13%)
+    White (text): hsl(0, 0, 100%)  */
 }
 
+body{
+    font-family: 'Spartan', sans-serif;
+    font-size: 32px;
+    background-color:lightgray;
+    width: 20em;
+    margin: 25vh auto;
+    height: 100vh;
+}
+
+/* .calcWrapper{ 
+} */
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+.themeWrapper{
+    margin: auto 0;
+}
+.theme1{
+    background-color: var( --very-dark-desaturated-blue-main);
+}
+.theme2{
+    background-color: lightseagreen;
+}
+.theme3{
+    background-color: lightskyblue;
+}
 .clacWindow{
     border:1px solid black;
     height:40px;
     margin:10px;
     text-align: right;
 }
+.keyboardWrapper{
+
+}
+
 .board{
     display: flex;
     width:100%;
