@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Button from "./components/Button"
 import Header from "./components/Header"
-import Display from "./components/Display"
+import Screen from "./components/Screen"
 import Keyboard from "./components/Keyboard"
 
 function App() {
-  const [theme, setTheme] = useState("theme1");
+  const [themeValue,setThemeValue]=useState("1");
+  const [theme, setTheme] = useState("theme"+themeValue);
   const [result, setResult] = useState("0");
   const [num1, setNum1] = useState("");
   const [num2, setNum2] = useState("");
   const [symbol, setSymbol] = useState("");
-
+  const body = document.getElementById("body")
+  body.classList.add(theme)
+ 
   let n = 0;
   const nums = Array();
   while (n < 10) {
@@ -21,7 +24,7 @@ function App() {
   //const [formula, setFormula] = useState("");
 
   useEffect(() => {
-    console.table(result, num1, symbol, num2);
+   // console.table(result, num1, symbol, num2);
   });
   function clickNum(e) {
     let givenNum
@@ -96,18 +99,26 @@ function App() {
     setSymbol("")
   }
   function handleTheme(e) {
-    const body = document.getElementById("body")
+    const newValue=e.target.value;
+    const currentTheme="theme" + newValue
+    setThemeValue(newValue)
+    setTheme(currentTheme)
+
     body.classList.remove(theme)
-    body.classList.add("theme" + e.target.innerText)
-    setTheme("theme" + e.target.innerText)
+    body.classList.add(currentTheme)
+    
+    const ball= document.querySelector(".ball");
+    const d = (newValue-1) * 14;
+    ball.style.transition=".7s";
+    ball.style.left= d + "px";
+
   }
 
   return (
-
     <div className={`calcWrapper ${theme}`}>
-      <Header handleTheme={handleTheme} />
-      <Display result={result} />
-      <Keyboard nums={nums}
+      <Header handleTheme={handleTheme} themeValue={themeValue}/>
+      <Screen theme={theme} result={result} />
+      <Keyboard theme={theme} nums={nums}
         symbols={symbols}
         clickNum={clickNum}
         clickSymbol={clickSymbol}

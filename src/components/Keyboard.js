@@ -1,8 +1,8 @@
 import React from "react"
 import Button from "./Button"
 
-export default function Keyboard({ nums, symbols, clickNum, clickSymbol, resetAll, clickEqual }) {
-    return <div className="keyboardWrapper">
+export default function Keyboard({ theme, nums, symbols, clickNum, clickSymbol, resetAll, clickEqual }) {
+    return <div className={`keyboardWrapper ${theme+"K"}`}>
         <div className="board">
             <div className="numBoard">
                 {nums.map(i =>
