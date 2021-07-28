@@ -1,9 +1,9 @@
 import React from "react"
 
-export default function Button({name,clickKey}) {
+export default function Button({name,symbol,clickKey}) {
     return (
-        <div onClick={clickKey}>
-            {name}
+        <div className={`key ${name}`} onClick={clickKey}>
+           <span>{symbol}</span> 
         </div>
     )
 }

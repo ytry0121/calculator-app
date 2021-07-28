@@ -1,30 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import Button from "./components/Button"
+//import Button from "./components/Button"
 import Header from "./components/Header"
 import Screen from "./components/Screen"
 import Keyboard from "./components/Keyboard"
 
 function App() {
-  const [themeValue,setThemeValue]=useState("1");
-  const [theme, setTheme] = useState("theme"+themeValue);
+  const [themeValue, setThemeValue] = useState("1");
+  const [theme, setTheme] = useState("theme" + themeValue);
   const [result, setResult] = useState("0");
   const [num1, setNum1] = useState("");
   const [num2, setNum2] = useState("");
   const [symbol, setSymbol] = useState("");
   const body = document.getElementById("body")
   body.classList.add(theme)
- 
+
   let n = 0;
   const nums = Array();
   while (n < 10) {
     nums.push(n)
     n++;
   }
-  const symbols = ["+", "-", "x", "/"];
+  //  const symbols = ["+", "-", "x", "/"];
+  const symbols = new Array({ "name": "add", "symbol": "+" },
+    { "name": "sub", "symbol": "-" },
+    { "name": "multiply", "symbol": "x" },
+    { "name": "divide", "symbol": "/" });
   //const [formula, setFormula] = useState("");
 
   useEffect(() => {
-   // console.table(result, num1, symbol, num2);
+    // console.table(result, num1, symbol, num2);
   });
   function clickNum(e) {
     let givenNum
@@ -99,26 +103,26 @@ function App() {
     setSymbol("")
   }
   function handleTheme(e) {
-    const newValue=e.target.value;
-    const currentTheme="theme" + newValue
+    const newValue = e.target.value;
+    const newTheme = "theme" + newValue
     setThemeValue(newValue)
-    setTheme(currentTheme)
+    setTheme(newTheme)
 
     body.classList.remove(theme)
-    body.classList.add(currentTheme)
-    
-    const ball= document.querySelector(".ball");
-    const d = (newValue-1) * 14;
-    ball.style.transition=".7s";
-    ball.style.left= d + "px";
+    body.classList.add(newTheme)
+
+    const ball = document.querySelector(".ball");
+    const d = (newValue - 1) * 18;
+    ball.style.transition = ".6s";
+    ball.style.left = d + "px";
 
   }
 
   return (
     <div className={`calcWrapper ${theme}`}>
-      <Header handleTheme={handleTheme} themeValue={themeValue}/>
-      <Screen theme={theme} result={result} />
-      <Keyboard theme={theme} nums={nums}
+      <Header handleTheme={handleTheme} themeValue={themeValue} />
+      <Screen  result={result} />
+      <Keyboard nums={nums}
         symbols={symbols}
         clickNum={clickNum}
         clickSymbol={clickSymbol}

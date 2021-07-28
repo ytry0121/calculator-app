@@ -14,7 +14,7 @@
     --grayish-orange: hsl(28, 16%, 65%);/* (key shadow)*/
     /* Text */
     --very-dark-grayish-blue: hsl(221, 14%, 31%);
-    --white: hsl(0, 0, 100%)
+    --white: hsl(0, 0%, 100%);
 
 
     /* Theme 2 */
@@ -61,12 +61,14 @@
     Very dark blue: hsl(198, 20%, 13%)
     White (text): hsl(0, 0, 100%)  */
 }
+*{
+    box-sizing: border-box;
+}
 
 body{
     font-family: 'Spartan', sans-serif;
     font-size: 32px;
-    /* background-color:lightgray; */
-    width: 20em;
+    width: 540px;
     margin: 25vh auto;
     height: 100vh;
 }
@@ -79,33 +81,64 @@ body{
 }
 .themeWrapper{
     margin: auto 0;
+    font-size: 12px;
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(2,1fr);
 }
-
+.tTitle{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;   
+    grid-column: 1/2;
+    grid-row: 2;
+}
+.tTitle p{
+    letter-spacing: 2px;
+}
+.tVer{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    grid-column: 2/3;
+    grid-row: 1;
+}
+.toggleWrapper{
+    grid-column: 2/3;
+    grid-row: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .toggleForm{
     display: flex;
+    align-items: stretch;
     position:relative;
-    width:45px;
-    height:14px;
+    width:70px;
+    height:26px;
     cursor: pointer;
-    border:2px solid white;
-    border-radius: 14px;
+    border-radius: 1.5em;
+}
+.theme1 .toggleForm{
+    border: 4px solid var(--very-dark-desaturated-blue-keypad);
+    background-color:var(--very-dark-desaturated-blue-keypad);
 }
 .ball{
     position:absolute;
     left:0px;
-    width:14px;
-    height:14px;
-    border-radius: 14px;  
-    background-color: rgb(245, 145, 14); 
+    width:1.5em;
+    height:1.5em;
+    border-radius: 1.5em;  
+}
+.theme1 .ball{
+    background-color: var(--red); 
 }
 input[type="radio"]{
     appearance:none ;
 }
 label{
     appearance:none ;
-    width:14px;
-    height:14px;
-    border-radius: 14px;
+    flex-grow: 1;
     cursor: pointer;
     outline:none;
 }
@@ -113,34 +146,132 @@ label{
 .theme1{
     background-color: var( --very-dark-desaturated-blue-main);
 }
-.theme1S{
-    background-color: var(--very-dark-desaturated-blue-screen);
+/* .theme1H{ */
+ .theme1 .header{
+   color: var( --white);
 }
-.theme1K{
+.theme1 .screen{
+    background-color: var(--very-dark-desaturated-blue-screen);
+    color: var( --white);
+}
+.theme1 .board{
     background-color: var(--very-dark-desaturated-blue-keypad);
 }
+.theme1 .key{
+    background-color: var(--light-grayish-orange);
+    box-shadow: 0 5px var(--grayish-orange);
+}
+
 .theme2{
     background-color: lightseagreen;
 }
 .theme3{
     background-color: lightskyblue;
 }
-.clacWindow{
-    border:1px solid black;
-    height:40px;
-    margin:10px;
-    text-align: right;
+.screen{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    height: 4em;
+    padding: 0 .5em;
+    margin-bottom: 24px;
+    border-radius: 10px;
 }
-.keyboardWrapper{
-
+.screen span{
+    flex-grow: 1;
+    text-align: end;
+    font-size: 1.5em;
+    height: 1em;
 }
 
 .board{
-    display: flex;
-    width:100%;
-}
-.numBoard{
     display:grid;
-    grid-template-columns: repeat(3,1fr);
-    width: 60%;
+    grid-template-areas: "k7 k8 k9 del"
+    "k4 k5 k6 add"
+    "k1 k2 k3 sub"
+    "point k0 divide multiply"
+    "reset reset equal equal";
+    gap:20px;
+    padding:1em;
+    border-radius: 10px;
+}
+.key{
+    width:100px;
+    height:60px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.key span{
+    height:1em;
+}
+.k0{
+    grid-area:k0;
+}
+.k1{
+    grid-area:k1;
+}
+
+.k2{
+    grid-area:k2;
+}
+.k3{
+    grid-area:k3;
+}
+.k4{
+    grid-area:k4;
+}
+.k5{
+    grid-area:k5;
+}
+.k6{
+    grid-area:k6;
+}
+.k7{
+    grid-area:k7;
+}
+.k8{
+    grid-area:k8;
+}
+.k9{
+    grid-area:k9;
+}
+.del{
+    grid-area:del;
+    font-size: 18px;
+}
+.add{
+    grid-area:add;
+}
+.sub{
+    grid-area:sub;
+}
+.divide{
+    grid-area:divide;
+}
+.multiply{
+    grid-area:multiply;
+}
+.point{
+    grid-area:point;
+}
+.reset{
+    grid-area:reset;
+    width: 225px;
+    font-size: 18px;
+}
+.theme1 .reset, .theme1 .del {
+    color:var(--white);
+    background-color: var(--desaturated-dark-blue-bg);
+    box-shadow: 0 5px var(--desaturated-dark-blue-shadow);     
+}
+.equal{
+    grid-area:equal;
+    width: 225px;
+}
+.theme1 .equal{
+    color:var(--white);
+    background-color: var(--red);
+    box-shadow: 0 5px var(--dark-red);     
 }

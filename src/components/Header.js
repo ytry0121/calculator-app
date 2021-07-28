@@ -1,12 +1,14 @@
 import React from "react"
 
-export default function Header({ handleTheme, themeValue }) {
+export default function Header({ handleTheme, themeValue,theme }) {
 
-    return <div className="header">
-        <h2>calc</h2>
+    return <div className={`header ${theme + "H"}`}>
+        <h3>calc</h3>
         <div className="themeWrapper">
-            <div>THEME/123 </div>
+            <div className="tTitle"><p>THEME</p></div>
+            <div className="tVer"><span>1</span><span>2</span><span>3</span></div>
             {/* <div className="themeToggle"> */}
+            <div className="toggleWrapper">
             <form className="toggleForm">
                 <span className="ball"></span>
                 <label htmlFor="t1">
@@ -19,6 +21,7 @@ export default function Header({ handleTheme, themeValue }) {
                     <input type="radio" id="t3" name="theme" value="3" checked={themeValue === "3"} onChange={handleTheme} />
                 </label>
             </form>
+            </div>
             {/* </div> */}
         </div>
     </div>
